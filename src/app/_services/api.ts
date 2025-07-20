@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "https://api.leejihyeon.dev:8088",
+  baseURL: "https://api.leejihyeon.dev",
   withCredentials: true,
 });
 
