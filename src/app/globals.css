@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@tailwind utilities;
+@custom-variant dark (&:where(.dark, .dark *));
+
+.font-bitcount {
+  font-family: "Bitcount Prop Single", sans-serif;
+}
+
+@theme {
+  /* --font-family-sans: var(--font-nanum-square-neo); */
+  /* --font-noto-sans: var(--font-noto-sans-kr); */
+  /* --font-pretendard: var(--font-pretendard); */
+  --font-paperlogy: var(--font-paperlogy);
+}
