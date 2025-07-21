@@ -216,7 +216,7 @@ export default function PostDisplay({ post }: { post: Post }) {
           </div>
         )}
       </div>
-      <div className="mt-12 border-t pt-8">
+      <div className="mt-12 border-t pt-8 px-4 md:px-5 lg:px-6">
         <Comments />
       </div>
     </article>

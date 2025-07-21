@@ -196,14 +196,14 @@ const Header = () => {
         </nav>
 
         {/* 모바일 메뉴 아이콘 */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="md:hidden flex items-center gap-2 max-w-full overflow-hidden">
           <form
             onSubmit={handleMobileSearchSubmit}
-            className="font-bitcount md:hidden relative flex items-center mr-2"
+            className="font-bitcount md:hidden relative flex items-center flex-grow"
           >
             <div
               className={`transition-all duration-300 overflow-hidden ${
-                isMobileSearchOpen ? "w-40 opacity-100" : "w-0 opacity-0"
+                isMobileSearchOpen ? "flex-grow opacity-100" : "w-0 opacity-0"
               }`}
             >
               <input
@@ -211,7 +211,7 @@ const Header = () => {
                 placeholder="search"
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="w-full px-2 py-1 border-2 border-dotted rounded-lg dark:bg-gray-700 dark:border-gray-300 text-start dark:text-white"
+                className="w-full px-2 py-1 border-2 border-dotted rounded-lg dark:bg-gray-700 dark:border-gray-300 text-start dark:text-white min-w-0"
               />
             </div>
           </form>

@@ -17,7 +17,7 @@ export default function CategoryList() {
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <aside className="font-paperlogy max-w-5xl mx-auto tracking-tighter p-4 rounded-lg bg-transparent mb-4">
+    <aside className="font-paperlogy max-w-3xl mx-auto tracking-tighter p-4 rounded-lg bg-transparent mb-4">
       <div>
         <div className="flex justify-between items-center font-bold mb-4 text-lg dark:text-white uppercase">
           <h3 className="">TAGS</h3>
@@ -39,7 +39,10 @@ export default function CategoryList() {
                   href={`/category/${category.name}`}
                   className="inline-block bg-gray-100 dark:bg-gray-800 rounded-full px-3 py-1 text-xs lg:text-sm font-bold text-gray-700 dark:text-gray-100 hover:bg-gray-300 transition-colors duration-300"
                 >
-                  #{category.name} ({category.postCount})
+                  <span className="mr-0.5">#{category.name}</span>
+                  <span className="text-[9px] lg:text-[10px]">
+                    ({category.postCount})
+                  </span>
                 </Link>
               </li>
             ))}

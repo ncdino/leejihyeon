@@ -11,7 +11,7 @@ export default function MainPostCard({ post }: PostCardProps) {
   const summaryText = stripMarkdown(post.content);
 
   return (
-    <li className="border-b pt-4 pb-8 border-gray-300 dark:border-gray-700 font-paperlogy font-light tracking-tight transition-colors duration-300 max-w-3xl">
+    <li className="border-b pt-4 pb-8 border-gray-300 dark:border-gray-700 font-paperlogy font-light tracking-tight transition-colors duration-300 max-w-3xl mx-auto">
       <div className="flex justify-between">
         <div className="flex items-center text-sm text-gray-500 dark:text-gray-300 mb-4 transition-colors duration-300">
           <div className="flex justify-start">
