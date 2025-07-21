@@ -31,6 +31,12 @@ export default function RootLayout({
           href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css"
           rel="stylesheet"
         />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="leejihyeon.dev RSS Feed"
+          href="/feed.xml"
+        />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
       </head>

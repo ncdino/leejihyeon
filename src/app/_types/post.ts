@@ -16,3 +16,8 @@ export type MemoRequestDto = {
   thumbnailUrl: string | null;
   imageUrls: string[];
 };
+
+export type CategoryCount = {
+  name: string;
+  postCount: number;
+};

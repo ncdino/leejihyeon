@@ -21,6 +21,6 @@ export const useThemeStore = create<ThemeState>((set) => ({
 }));
 
 export const useCategoryState = create<CategoryState>((set) => ({
-  isOpen: false,
+  isOpen: true,
   toggle: () => set((state) => ({ isOpen: !state.isOpen })),
 }));

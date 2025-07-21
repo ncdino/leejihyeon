@@ -69,15 +69,27 @@ export default function MainPostList() {
   return (
     <section className="max-w-5xl mx-auto">
       <CategoryList />
-      <div className="flex justify-center text-neutral-600 dark:text-neutral-300">
+
+      <ul className="">
+        {data?.pages.map((page) =>
+          page.content.map((post: Post) => (
+            <MainPostCard key={post.id} post={post} />
+          ))
+        )}
+      </ul>
+      <div ref={observerRef} />
+      {hasNextPage && (
+        <div className="text-center">더 많은 글을 불러오는 중...</div>
+      )}
+      <div className="flex justify-center text-neutral-600 dark:text-neutral-300 mt-12">
         <span className="font-paperlogy text-xl">
           {isSearching ? (
             <>
               <span>&quot;</span>
-              <span className="font-bold text-neutral-950 dark:text-neutral-50">
+              <span className="font-bold text-neutral-950 dark:text-neutral-50 mr-0.5">
                 {searchTerm}
               </span>
-              &quot;에 대한 검색 결과
+              &quot;에 대한 검색 결과{" "}
               <span className="font-bold text-neutral-950 dark:text-neutral-50">
                 {totalCount || 0}
               </span>
@@ -94,18 +106,6 @@ export default function MainPostList() {
           )}
         </span>
       </div>
-
-      <ul className="">
-        {data?.pages.map((page) =>
-          page.content.map((post: Post) => (
-            <MainPostCard key={post.id} post={post} />
-          ))
-        )}
-      </ul>
-      <div ref={observerRef} />
-      {hasNextPage && (
-        <div className="text-center">더 많은 글을 불러오는 중...</div>
-      )}
     </section>
   );
 }

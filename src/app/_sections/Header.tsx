@@ -97,10 +97,6 @@ const Header = () => {
 
   const handleLinkClick = () => setIsMobileMenuOpen(false);
 
-  // useEffect(() => {
-  //   console.log(isLogin);
-  // }, [isLogin]);
-
   return (
     <header
       ref={headerRef}
@@ -230,6 +226,19 @@ const Header = () => {
             )}
           </button>
           <button
+            onClick={() => {
+              toggleTheme();
+              handleLinkClick();
+            }}
+            className="p-2 rounded text-left text-neutral-950 hover:text-neutral-600 dark:text-neutral-50 dark:hover:text-neutral-400"
+          >
+            {theme === "dark" ? (
+              <i className="bx bx-sun text-2xl"></i>
+            ) : (
+              <i className="bx bx-moon text-2xl"></i>
+            )}
+          </button>
+          <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="dark:text-white text-2xl"
           >
@@ -255,15 +264,6 @@ const Header = () => {
             label="Profile"
             onLinkClick={handleLinkClick}
           />
-          <button
-            onClick={() => {
-              toggleTheme();
-              handleLinkClick();
-            }}
-            className="p-2 rounded text-left text-neutral-950 hover:text-neutral-600 dark:text-neutral-50 dark:hover:text-neutral-400"
-          >
-            {theme === "dark" ? "Light" : "Dark"} Mode
-          </button>
           {isLogin && (
             <button
               className="text-neutral-950 dark:text-neutral-50"

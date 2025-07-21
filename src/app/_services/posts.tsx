@@ -1,8 +1,13 @@
 import apiClient from "./api";
-import { Post, MemoRequestDto } from "../_types/post";
+import { Post, MemoRequestDto, CategoryCount } from "../_types/post";
 
 export const getAllPosts = async ({ pageParam = 0 }) => {
   const res = await apiClient.get(`/api/memos?page=${pageParam}&size=10`);
+  return res.data;
+};
+
+export const getAllPostsForRSS = async () => {
+  const res = await apiClient.get(`/api/memos`);
   return res.data;
 };
 
@@ -51,9 +56,9 @@ export const getSearchResultCount = async (searchTerm: string) => {
   return res.data;
 };
 
-export const getAllCategories = async (): Promise<string[]> => {
-  const response = await apiClient.get("/api/categories");
-  return response.data;
+export const getAllCategories = async (): Promise<CategoryCount[]> => {
+  const res = await apiClient.get("/api/categories");
+  return res.data;
 };
 
 export const deletePost = async (id: string) => {
@@ -67,6 +72,6 @@ export const updatePost = async ({
   id: string;
   postData: MemoRequestDto;
 }) => {
-  const response = await apiClient.put<Post>(`/api/memos/${id}`, postData);
-  return response.data;
+  const res = await apiClient.put<Post>(`/api/memos/${id}`, postData);
+  return res.data;
 };
