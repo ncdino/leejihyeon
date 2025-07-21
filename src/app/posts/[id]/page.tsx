@@ -32,7 +32,6 @@ export default async function PostDetailPage({ params }: Props) {
   try {
     post = await getPostById(id);
   } catch {
-    // Remove 'error' parameter
     notFound();
   }
 

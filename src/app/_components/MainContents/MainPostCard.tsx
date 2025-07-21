@@ -11,7 +11,7 @@ export default function MainPostCard({ post }: PostCardProps) {
   const summaryText = stripMarkdown(post.content);
 
   return (
-    <li className="border-b pt-4 pb-8 border-gray-300 dark:border-gray-700 font-paperlogy font-light tracking-tight transition-colors duration-300">
+    <li className="border-b pt-4 pb-8 border-gray-300 dark:border-gray-700 font-paperlogy font-light tracking-tight transition-colors duration-300 max-w-3xl">
       <div className="flex justify-end">
         <span className="inline-block md:hidden text-xs text-neutral-600 dark:text-neutral-400">
           {dayjs(post.createdAt).format("YYYY. M. D.")}
@@ -19,11 +19,11 @@ export default function MainPostCard({ post }: PostCardProps) {
       </div>
       <div className="flex justify-between items-start">
         <Link href={`/posts/${post.id}`} className="no-underline text-inherit">
-          <h2 className="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-3 lg:mb-4 truncate text-black dark:text-neutral-50 hover:text-neutral-700 hover:dark:text-neutral-300 transition-colors duration-300">
+          <h2 className="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-3 lg:mb-4 text-black dark:text-neutral-50 hover:text-neutral-700 hover:dark:text-neutral-300 transition-colors duration-300">
             {post.title}
           </h2>
         </Link>
-        <span className="hidden md:inline-block text-xs md:text-sm text-neutral-600 dark:text-neutral-400">
+        <span className="hidden md:inline-block text-xs md:text-sm text-neutral-600 dark:text-neutral-400 ml-4 flex-shrink-0">
           {dayjs(post.createdAt).format("YYYY. M. D.")}
         </span>
       </div>

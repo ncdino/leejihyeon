@@ -50,7 +50,7 @@ export default function RecentPosts() {
       <div className="text-sm truncate flex flex-row items-center">
         <Link
           href={`/posts/${recentPost.id}`}
-          className="font-paperlogy text-gray-600 dark:text-gray-300 hover:font-bold"
+          className="font-paperlogy flex text-gray-600 dark:text-gray-300 hover:font-bold"
         >
           {recentPost.title}
         </Link>

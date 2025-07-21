@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, Suspense } from "react"; // Suspense 추가
+import { useEffect, useState, useCallback, Suspense } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter, useSearchParams } from "next/navigation";
 import MDEditor from "@uiw/react-md-editor";
@@ -70,7 +70,7 @@ function NewPostContent() {
       }
     },
     [router]
-  ); // router만 의존성으로 추가
+  );
 
   useEffect(() => {
     const editId = searchParams.get("edit");
@@ -79,7 +79,7 @@ function NewPostContent() {
       setEditPostId(editId);
       loadPostData(editId);
     }
-  }, [searchParams, loadPostData]); // loadPostData를 의존성에 추가
+  }, [searchParams, loadPostData]);
 
   useEffect(() => {
     if (authChecked) {
@@ -120,12 +120,13 @@ function NewPostContent() {
 
   // 게시글 수정
   const postUpdateMutation = useMutation({
-    mutationFn: ({ id, formData }: { id: string; formData: FormData }) =>
-      updatePost({ id, formData }),
+    mutationFn: ({ id, postData }: { id: string; postData: MemoRequestDto }) =>
+      updatePost({ id, postData }),
     onSuccess: (updatedPost) => {
       queryClient.invalidateQueries({ queryKey: ["posts"] });
-      alert("게시글이 성공적으로 수정되었습니다!");
-      router.push(`/post/${updatedPost.id}`);
+      queryClient.invalidateQueries({ queryKey: ["post", updatedPost.id] });
+      alert("게시글 수정 완료");
+      router.push(`/posts/${updatedPost.id}`);
     },
     onError: (error) => {
       alert(`게시글 수정 실패: ${error.message}`);
@@ -142,44 +143,20 @@ function NewPostContent() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    if (isEditMode && editPostId) {
-      const formData = new FormData();
-      formData.append("title", title.trim());
-      formData.append("content", content.trim());
-
-      const categoryList = categories
+    const postData: MemoRequestDto = {
+      title,
+      content,
+      categories: categories
         .split(",")
         .map((cat) => cat.trim())
-        .filter((cat) => cat);
+        .filter((cat) => cat),
+      thumbnailUrl: uploadedImageUrls.length > 0 ? uploadedImageUrls[0] : null,
+      imageUrls: uploadedImageUrls,
+    };
 
-      categoryList.forEach((category) => {
-        formData.append("categories", category);
-      });
-
-      uploadedImageUrls.forEach((url) => {
-        formData.append("imageUrls", url);
-      });
-
-      if (uploadedImageUrls.length > 0) {
-        formData.append("thumbnailUrl", uploadedImageUrls[0]);
-      }
-
-      postUpdateMutation.mutate({ id: editPostId, formData });
+    if (isEditMode && editPostId) {
+      postUpdateMutation.mutate({ id: editPostId, postData });
     } else {
-      // 생성
-      const postData: MemoRequestDto = {
-        title,
-        content,
-        categories: categories
-          .split(",")
-          .map((cat) => cat.trim())
-          .filter((cat) => cat),
-        thumbnailUrl:
-          uploadedImageUrls.length > 0 ? uploadedImageUrls[0] : null,
-        imageUrls: uploadedImageUrls,
-      };
-
       postSubmitMutation.mutate(postData);
     }
   };

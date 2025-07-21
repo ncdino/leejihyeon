@@ -2,6 +2,7 @@
 
 @tailwind utilities;
 @custom-variant dark (&:where(.dark, .dark *));
+@plugin "@tailwindcss/typography";
 
 .font-bitcount {
   font-family: "Bitcount Prop Single", sans-serif;

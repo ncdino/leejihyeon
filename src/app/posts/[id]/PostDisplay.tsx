@@ -119,7 +119,7 @@ export default function PostDisplay({ post }: { post: Post }) {
           {/* 제목 오버레이 */}
           <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12">
             <div className="space-y-4">
-              <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
+              <h1 className="text-2xl lg:text-4xl font-bold text-white leading-tight drop-shadow-lg">
                 {post.title}
               </h1>
               <div className="flex items-center space-x-2 text-white/90">
@@ -138,12 +138,12 @@ export default function PostDisplay({ post }: { post: Post }) {
         <div className="mb-12 px-6 lg:px-8">
           <div className="flex justify-between items-start mb-6">
             <div className="space-y-6 flex-1">
-              <h1 className="text-5xl lg:text-7xl font-bold leading-tight bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-600 dark:from-neutral-100 dark:via-neutral-200 dark:to-neutral-400 bg-clip-text text-transparent">
+              <h1 className="text-2xl lg:text-4xl font-bold leading-tight bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-600 dark:from-neutral-100 dark:via-neutral-200 dark:to-neutral-400 bg-clip-text text-transparent">
                 {post.title}
               </h1>
               <div className="flex items-center space-x-3 text-neutral-600 dark:text-neutral-400">
                 <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-600 rounded-full"></div>
-                <span className="text-xl font-medium">
+                <span className="text-lg font-medium">
                   {dayjs(post.createdAt).format("YYYY년 M월 D일")}
                 </span>
               </div>

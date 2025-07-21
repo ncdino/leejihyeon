@@ -1,5 +1,5 @@
 import apiClient from "./api";
-import { Post } from "../_types/post";
+import { Post, MemoRequestDto } from "../_types/post";
 
 export const getAllPosts = async ({ pageParam = 0 }) => {
   const res = await apiClient.get(`/api/memos?page=${pageParam}&size=10`);
@@ -62,11 +62,11 @@ export const deletePost = async (id: string) => {
 
 export const updatePost = async ({
   id,
-  formData,
+  postData,
 }: {
   id: string;
-  formData: FormData;
+  postData: MemoRequestDto;
 }) => {
-  const response = await apiClient.put<Post>(`/api/memos/${id}`, formData);
+  const response = await apiClient.put<Post>(`/api/memos/${id}`, postData);
   return response.data;
 };
