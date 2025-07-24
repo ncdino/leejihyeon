@@ -17,7 +17,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.content.substring(0, 150),
     };
   } catch {
-    // Remove 'error' parameter
     return {
       title: "게시글을 찾을 수 없음",
       description: "존재하지 않거나 삭제된 게시글입니다.",

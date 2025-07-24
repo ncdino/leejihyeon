@@ -7,8 +7,8 @@ import AuthProvider from "@/components/AuthProvider";
 import RecentPosts from "./_components/RecentPosts";
 
 export const metadata: Metadata = {
-  title: "leejihyeon.dev | 이지현.개발",
-  description: "프론트엔드 개발자 블로그",
+  title: "leejihyeon.dev | 프론트엔드 개발 블로그",
+  description: "안녕하세요. 프론트엔드 개발자 블로그, leejihyeon.dev",
 };
 
 export default function RootLayout({
