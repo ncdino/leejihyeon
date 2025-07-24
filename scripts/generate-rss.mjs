@@ -1,18 +1,42 @@
 import fs from "fs";
 import RSS from "rss";
+const isProd = process.env.NODE_ENV === "production";
 
-const API_URL =
-  "https://api.leejihyeon.dev/api/memos?size=999" ||
-  "http://localhost:8088/api/memos?size=999";
+const API_URL = isProd
+  ? "https://api.leejihyeon.dev/api/memos?size=999"
+  : "http://localhost:8088/api/memos?size=999";
+
 async function fetchAllPosts() {
-  const res = await fetch(API_URL);
-  const data = await res.json();
-  return data.content;
+  try {
+    const res = await fetch(API_URL);
+
+    if (!res.ok) {
+      const text = await res.text();
+      return [];
+    }
+
+    const data = await res.json();
+
+    if (!Array.isArray(data.content)) {
+      console.error("content 없음");
+      return [];
+    }
+
+    return data.content;
+  } catch (err) {
+    console.error("fetchAllPosts 실패: ", err);
+    return [];
+  }
 }
 
 async function generateRSSFeed() {
   const siteUrl = "https://leejihyeon.dev";
   const allPosts = await fetchAllPosts();
+
+  if (!allPosts.length) {
+    console.warn("RSS 생성을 건너뜁니다: 가져온 게시물이 없습니다.");
+    return;
+  }
 
   const feed = new RSS({
     title: "leejihyeon.dev",
@@ -32,8 +56,11 @@ async function generateRSSFeed() {
     });
   });
 
-  fs.writeFileSync("./public/feed.xml", feed.xml({ indent: true }));
-  console.log("RSS feed generated successfully.");
+  try {
+    fs.writeFileSync("./public/feed.xml", feed.xml({ indent: true }));
+  } catch (err) {
+    console.error("RSS 생성실패 ", err);
+  }
 }
 
 generateRSSFeed();
