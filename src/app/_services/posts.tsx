@@ -1,5 +1,10 @@
 import apiClient from "./api";
-import { Post, MemoRequestDto, CategoryCount } from "../_types/post";
+import {
+  Post,
+  MemoRequestDto,
+  CategoryCount,
+  MemoSitemapDto,
+} from "../_types/post";
 
 export const getAllPosts = async ({ pageParam = 0 }) => {
   const res = await apiClient.get(`/api/memos?page=${pageParam}&size=10`);
@@ -73,5 +78,10 @@ export const updatePost = async ({
   postData: MemoRequestDto;
 }) => {
   const res = await apiClient.put<Post>(`/api/memos/${id}`, postData);
+  return res.data;
+};
+
+export const getAllMemosForSitemap = async (): Promise<MemoSitemapDto[]> => {
+  const res = await apiClient.get("/api/memos/sitemap");
   return res.data;
 };

@@ -36,8 +36,8 @@ export default function RecentPosts() {
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 rounded-full bg-[radial-gradient(circle,rgba(59,130,246,1)_0%,rgba(59,130,246,0)_70%)]" />
-          <h3 className="font-bitcount font-bold text-sm dark:text-white">
-            Recently viewed post
+          <h3 className="font-paperlogy font-bold text-sm dark:text-white">
+            최근에 본 포스트
           </h3>
         </div>
         <button

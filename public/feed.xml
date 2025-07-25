@@ -4,117 +4,83 @@
         <description><![CDATA[프론트엔드 개발자 블로그, leejihyeon.dev]]></description>
         <link>https://leejihyeon.dev</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 21 Jul 2025 05:17:27 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 24 Jul 2025 18:55:27 GMT</lastBuildDate>
         <atom:link href="https://leejihyeon.dev/feed.xml" rel="self" type="application/rss+xml"/>
         <language><![CDATA[ko]]></language>
         <item>
-            <title><![CDATA[챠챠]]></title>
-            <description><![CDATA[# 챠챠
+            <title><![CDATA[서버부터 시작해서 프론트까지 블로그 제작기...(도입)]]></title>
+            <description><![CDATA[
+## 도입부.
 
-## 제목 2
+원래 목표는 간단했어요.  
+블로그를 설계부터 구현까지 다 내 손으로 해보는 것!
 
-안녕하세요 **강조** 해볼게요]]></description>
-            <link>https://leejihyeon.dev/posts/17</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/17</guid>
-            <pubDate>Mon, 21 Jul 2025 01:14:53 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[d]]></title>
-            <description><![CDATA[입력d]]></description>
-            <link>https://leejihyeon.dev/posts/16</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/16</guid>
-            <pubDate>Mon, 21 Jul 2025 00:49:12 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[이번엔 페이지네이션 테스트(2)]]></title>
-            <description><![CDATA[![](https://images.unsplash.com/photo-1682687220945-922198770e60?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+원래 사용했던 velog가 있었는데 손이 잘 안가더라구요.  
 
-챠챠챠]]></description>
-            <link>https://leejihyeon.dev/posts/14</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/14</guid>
-            <pubDate>Sat, 19 Jul 2025 02:08:54 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[이번엔 페이지네이션 테스트(1)]]></title>
-            <description><![CDATA[**내용을 입력하세요**]]></description>
-            <link>https://leejihyeon.dev/posts/13</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/13</guid>
-            <pubDate>Sat, 19 Jul 2025 02:07:37 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[썸네일 없는 글 테스트]]></title>
-            <description><![CDATA[Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.]]></description>
-            <link>https://leejihyeon.dev/posts/12</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/12</guid>
-            <pubDate>Sat, 19 Jul 2025 01:47:30 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[하이]]></title>
-            <description><![CDATA[**내용을 입력하세요**
+그래서 제가 직접 만들면 포스팅을 자주할거같다는 생각에 블로그를 만들 계획은 있었습니다.
 
-jwt 말하는건가요]]></description>
-            <link>https://leejihyeon.dev/posts/11</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/11</guid>
-            <pubDate>Fri, 18 Jul 2025 20:25:24 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[마크다운 테스트]]></title>
-            <description><![CDATA[**내용을 입력하세요**
+근데 제 계획에 서버는 전혀 생각 안 했었죠.
 
-![](https://leejihyeon-blog-storage.s3.ap-northeast-2.amazonaws.com/content-images/c102b2f7-186b-4b35-8acd-6b41b0c76c34_bg-white-fine.png)
+> “그냥 원래 하던대로 클라우드써서 데이터베이스 연결해서 뿌려야겠다”
 
-## 마크다운 테스트입니다.
-<h2>rehypRAW</h2>]]></description>
-            <link>https://leejihyeon.dev/posts/10</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/10</guid>
-            <pubDate>Thu, 17 Jul 2025 16:02:52 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA["역대급 규제 통했다?"…고가 아파트는 더 뛰었다]]></title>
-            <description><![CDATA[<h1>6·27 대출규제 시행으로 수도권의 10억원 이상 고가 아파트 거래량은 급감했지만 서울 일부 단지의 가격은 상승하는 상반된 현상이 나타났다.</h1>
+이게 얼마나 순진한(편리한) 생각이었는지...
+
+모든 시작은 어느 회사의 사전 과제였어요.  
+거기서 인증 토큰을 브라우저 로컬/세션스토리지에 저장하는 걸 보고, 문득 의문이 들었죠.
+
+💭 **“이거 왜 이렇게 했지?”**
+
+그 인증 관련 보안에 대한 작은 의문이 결국 저를 ‘서버’라는 거대한 산으로 끌고 갔답니다.
 
 
-17일 부동산 중개업체 집토스가 국토교통부 실거래가 자료를 바탕으로 6·27 대책 전후 수도권 아파트 매매 실거래가를 분석한 결과 올 1월1일∼6월27일 10억원 초과 아파트 거래 비중은 23.9%였다. 그러나 대책 시행 첫날인 6월28일부터 이달 16일까지 비중은 12.1%에 불과해 절반 수준으로 떨어졌다.
 
-같은 기간 5억원 이하 아파트 비중은 40.1%에서 50.4%로, 5억원 초과∼10억원 이하 비중은 36.1%에서 37.5%로 각각 증가했다. 대출규제 영향을 덜 받는 중저가 아파트 위주로 시장이 재편되는 양상이 나타났다.]]></description>
-            <link>https://leejihyeon.dev/posts/9</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/9</guid>
-            <pubDate>Thu, 17 Jul 2025 02:45:17 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[ㅁㄴㅇㄹ]]></title>
-            <description><![CDATA[**내용을 입력하세요**]]></description>
-            <link>https://leejihyeon.dev/posts/7</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/7</guid>
-            <pubDate>Wed, 16 Jul 2025 20:24:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[ㅁㄴㅇㄹfasd]]></title>
-            <description><![CDATA[**내용을 입력하세요**]]></description>
-            <link>https://leejihyeon.dev/posts/5</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/5</guid>
-            <pubDate>Wed, 16 Jul 2025 19:55:21 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[ㄴㅇㄹㅁ]]></title>
-            <description><![CDATA[**내용을 입력하세요**]]></description>
-            <link>https://leejihyeon.dev/posts/4</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/4</guid>
-            <pubDate>Wed, 16 Jul 2025 19:47:54 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Test3]]></title>
-            <description><![CDATA[asddsa]]></description>
-            <link>https://leejihyeon.dev/posts/3</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/3</guid>
-            <pubDate>Wed, 16 Jul 2025 18:24:42 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[test]]></title>
-            <description><![CDATA[asfdasdf]]></description>
-            <link>https://leejihyeon.dev/posts/1</link>
-            <guid isPermaLink="false">https://leejihyeon.dev/posts/1</guid>
-            <pubDate>Wed, 16 Jul 2025 18:24:08 GMT</pubDate>
+## 그래서 결심했습니다.
+
+포스팅만 하는 간단한 블로그라도,  
+
+**HttpOnly 쿠키를 써서 안전하게 인증하는 방법부터 직접 만들어보고 싶었어요.**  
+
+거기에 한 발짝 더 나아가서, AWS나 Vercel 같은 편리한 클라우드 말고  
+
+시즈모드 상태인 제 맥미니를 24시간 잠 안 자는 서버로 직접 돌려보기로 했죠.
+
+근데 그땐 몰랐죠...  
+
+기본 개념은 알고 있었지만, 직접 네트워크 설정부터 포트 포워딩, 방화벽 규칙까지  
+
+내 손으로 하나하나 만지고 부딪히면서 배우게 될 줄은... 😅
+
+##  현실은 상상 이상...😭
+
+Spring? 학교에서 배운건 자바 언어, 소켓프로그래밍이지
+Spring이라는 프레임워크를 만져본적도 없었고 그냥 
+
+💭 **“백엔드 프레임워크구나.”** 정도의 개념?
+
+정말 문외한이었습니다. 그래도 뭔가 하나에 꽂히면 끝을 봐야하는 성격이기에,,
+
+그리고 학습커브가 예전에 비해 많이 낮아졌다고 생각했기에,
+도전해보자는 생각이 들었습니다.
+
+실제로 3계층 아키텍처를 직접 구현하는 건 또 다른 차원이었어요.
+
+공인 IP, 사설 IP, 포트 포워딩, NAT 루프백, 방화벽 개념도 알고 있었지만,  
+직접 라우터 설정하고 방화벽 룰을 적용하며 터지는 에러를 마주하니 그게 훨씬 복잡하더라고요.
+
+매일매일 터미널에 `403 Forbidden`, `CORS Error`, `BUILD FAILED`가 뜨고,   몇 번이고 좌절하면서도 결국 하나씩 해결해 나갔답니다.
+
+## 앞으로의 포스팅,
+
+⏳ 남은 시간 동안,  
+이 좌충우돌 개발기와 배포 기록을  
+하나씩 블로그에 차근차근 풀어보려 해요.
+
+> 시작은 미약했지만, 끝은 창대할 거라 믿어요! 💪  
+> 다음 편에서는 Spring 아키텍처 선정부터 시작해서 여러 삽질 이야기를 진솔하게 풀어보고 싶어요!
+]]></description>
+            <link>https://leejihyeon.dev/posts/2</link>
+            <guid isPermaLink="false">https://leejihyeon.dev/posts/2</guid>
+            <pubDate>Wed, 23 Jul 2025 04:50:54 GMT</pubDate>
         </item>
     </channel>
 </rss>

@@ -86,7 +86,7 @@ export default function MainPostList() {
           {isSearching ? (
             <>
               <span>&quot;</span>
-              <span className="font-bold text-neutral-950 dark:text-neutral-50 mr-0.5">
+              <span className="font-bold text-neutral-950 dark:text-neutral-50">
                 {searchTerm}
               </span>
               &quot;에 대한 검색 결과{" "}

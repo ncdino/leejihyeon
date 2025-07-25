@@ -8,7 +8,6 @@ interface AuthState {
   logout: () => void;
 }
 
-// authchecked: 상태 확인 완료 여부
 export const useAuthStore = create<AuthState>((set) => ({
   isLogin: false,
   authChecked: false,

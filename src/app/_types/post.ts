@@ -21,3 +21,8 @@ export type CategoryCount = {
   name: string;
   postCount: number;
 };
+
+export type MemoSitemapDto = {
+  id: number;
+  createdAt: string;
+};
