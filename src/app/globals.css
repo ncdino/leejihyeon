@@ -14,3 +14,27 @@
   /* --font-pretendard: var(--font-pretendard); */
   --font-paperlogy: var(--font-paperlogy);
 }
+
+/* globals.css */
+
+pre {
+  @apply rounded-xl bg-gray-900 overflow-x-auto p-4 my-4;
+}
+
+code {
+  @apply text-sm;
+}
+
+pre[data-theme] {
+  background-color: transparent !important; /* shiki 배경 제거 */
+}
+
+/* 줄 번호 스타일 (옵션) */
+[data-line] {
+  @apply block px-4;
+}
+
+/* 하이라이팅 된 줄 */
+[data-highlighted-line] {
+  @apply bg-blue-900/40;
+}

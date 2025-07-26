@@ -11,6 +11,7 @@ import Comments from "@/app/_components/Comments";
 import { deletePost } from "@/app/_services/posts";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/app/_store/authStore";
+import remarkGfm from "remark-gfm";
 
 export default function PostDisplay({ post }: { post: Post }) {
   const headerHeight = useLayoutStore((state) => state.headerHeight);
@@ -187,8 +188,13 @@ export default function PostDisplay({ post }: { post: Post }) {
 
       {/* contents */}
       <div className="px-6 lg:px-8">
-        <div className="prose prose-lg lg:prose-xl max-w-none dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-p:leading-relaxed prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50/50 dark:prose-blockquote:bg-blue-950/30 prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:rounded-r-lg prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm">
-          <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+        <div
+          className="font-paperlogy prose prose-neutral max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-code:prose-code:px-1 prose-code:py-0.5 prose-code:rounded"
+        >
+          <ReactMarkdown
+            rehypePlugins={[rehypeRaw]}
+            remarkPlugins={[remarkGfm]}
+          >
             {post.content}
           </ReactMarkdown>
         </div>
