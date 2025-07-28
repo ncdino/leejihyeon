@@ -1,37 +1,37 @@
 import { visit } from "unist-util-visit";
-import { slug } from "github-slugger";
+import type { Plugin } from "unified";
+import type { Root, Heading, Text } from "mdast";
+import type { VFile } from "vfile";
 
-export interface Toc {
-  text: string;
-  slug: string;
+export interface TocEntry {
   level: number;
+  text: string;
+  id: string;
 }
 
-export function remarkExtractToc(toc: Toc[]) {
-  return () => {
-    return (tree: any) => {
-      visit(tree, "heading", (node) => {
-        const depth = node.depth;
-        if (depth > 3) return; // 일단 h1~3만
+const extractTocPlugin: Plugin<[], Root> = () => {
+  return (tree: Root, file: VFile) => {
+    const toc: TocEntry[] = [];
 
-        const text = node.children
-          .filter(
-            (child: any) => child.type === "text" || child.type === "inlineCode"
-          )
-          .map((child: any) => child.value)
-          .join("");
+    visit(tree, "heading", (node: Heading) => {
+      const text = node.children
+        .filter((child): child is Text => child.type === "text")
+        .map((child) => child.value)
+        .join("");
 
-        const id = slug(text);
-        toc.push({ text, slug: id, level: depth });
+      const id = (node.data?.hProperties?.id as string) || "";
 
-        node.data = {
-          ...node.data,
+      if (text && id) {
+        toc.push({
+          level: node.depth,
+          text,
           id,
-          hProperties: {
-            id,
-          },
-        };
-      });
-    };
+        });
+      }
+    });
+
+    file.data.toc = toc;
   };
-}
+};
+
+export default extractTocPlugin;
