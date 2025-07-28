@@ -4,12 +4,12 @@ import { notFound } from "next/navigation";
 import PostDisplay from "./PostDisplay";
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 // SEO !!// SEO !!// SEO !!// SEO !!// SEO !!// SEO !!// SEO !!// SEO !!
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = params;
+  const { id } = await params;
   try {
     const post = await getPostById(id);
     return {
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // SEO !!// SEO !!// SEO !!// SEO !!// SEO !!// SEO !!// SEO !!// SEO !!
 
 export default async function PostDetailPage({ params }: Props) {
-  const { id } = params;
+  const { id } = await params;
   let post;
   try {
     post = await getPostById(id);
