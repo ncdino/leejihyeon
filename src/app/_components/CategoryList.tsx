@@ -14,6 +14,20 @@ export default function CategoryList() {
 
   const { isOpen, toggle } = useCategoryState();
 
+  if (isLoading)
+    return (
+      <div className="fixed inset-0 flex flex-col items-center justify-center p-4 text-center dark: bg-opacity-90">
+        <img
+          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png"
+          alt="Eyes"
+          className="w-38 h-38 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto mb-4"
+        />
+        <p className="font-paperlogy text-lg md:text-xl lg:text-2xl dark:text-gray-200 text-gray-600 font-bold">
+          카테고리를 찾는 중이에요.
+        </p>
+      </div>
+    );
+
   return (
     <aside className="font-paperlogy max-w-3xl mx-auto tracking-tighter p-4 rounded-lg bg-transparent mb-4">
       <div>
