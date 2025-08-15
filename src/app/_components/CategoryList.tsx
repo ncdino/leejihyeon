@@ -14,8 +14,6 @@ export default function CategoryList() {
 
   const { isOpen, toggle } = useCategoryState();
 
-  if (isLoading) return <div>Loading...</div>;
-
   return (
     <aside className="font-paperlogy max-w-3xl mx-auto tracking-tighter p-4 rounded-lg bg-transparent mb-4">
       <div>

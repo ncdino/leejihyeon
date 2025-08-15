@@ -14,9 +14,9 @@ interface CategoryState {
 }
 
 export const useThemeStore = create<ThemeState>((set) => ({
-  theme: "dark",
+  theme: "light",
   toggleTheme: () =>
-    set((state) => ({ theme: state.theme === "dark" ? "light" : "dark" })),
+    set((state) => ({ theme: state.theme === "light" ? "dark" : "light" })),
   setTheme: (theme) => set({ theme }),
 }));
 

@@ -60,10 +60,33 @@ export default function MainPostList() {
     };
   }, [observerRef, hasNextPage, fetchNextPage]);
 
-  if (isLoading) return <div className="p-5 text-center">로딩 중입니다...</div>;
+  if (isLoading)
+    return (
+      <div className="fixed inset-0 flex flex-col items-center justify-center p-4 text-center dark: bg-opacity-90">
+        <img
+          // src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png"
+          // alt="Eyes"
+          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Star.png"
+          alt="Star"
+          className="w-38 h-38 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto mb-4"
+        />
+        <p className="font-paperlogy text-lg md:text-xl lg:text-2xl dark:text-gray-200 text-gray-600 font-bold">
+          글을 찾는중이에요
+        </p>
+      </div>
+    );
   if (isError)
     return (
-      <div className="p-5 text-center text-red-500">에러가 발생했습니다.</div>
+      <div className="fixed inset-0 flex flex-col items-center justify-center p-4 text-center dark: bg-opacity-90">
+        <img
+          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Cloud%20with%20Lightning%20and%20Rain.png"
+          alt="Cloud with Lightning and Rain"
+          className="w-38 h-38 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto mb-4"
+        />
+        <p className="font-paperlogy text-lg md:text-xl lg:text-2xl dark:text-orange-400 text-orange-600 font-bold">
+          지금은 데이터를 불러올 수 없어요
+        </p>
+      </div>
     );
 
   return (
