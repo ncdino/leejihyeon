@@ -62,7 +62,7 @@ export default function MainPostList() {
 
   if (isLoading)
     return (
-      <div className="fixed inset-0 flex flex-col items-center justify-center p-4 text-center dark: bg-opacity-90">
+      <div className="fixed inset-0 flex flex-col items-center justify-center p-4 text-center bg-opacity-90">
         <img
           // src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png"
           // alt="Eyes"
